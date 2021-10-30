@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <base href="/"/>
+    <script rel="stylesheet" type="text/css" src="/webjars/bootstrap/5.1.1/css/bootstrap.min.css"></script>
+    <script type="text/javascript" src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/5.1.1/js/bootstrap.min.js"></script>
+    <title>Seguridad OAuth2</title>
+</head>
+<body>
+<h1>#MISIONTIC 2022</h1>
+<div class="container unauthenticated">
+    Inicia sesión con Github:
+    <a href="/oauth2/authorization/github">Click Aqui</a>
+</div>
+<div class="container authenticated" style="display:none">
+    Autenticado como: <span id="user"></span>
+</div>
+</body>
+
+<script type="text/javascript">
+    $.get("/user",function (data){
+        $("#user").html(data.name);
+        $(".unauthenticated").hide();
+        $(".authenticated").show();
+    });
+</script>
+</html>
